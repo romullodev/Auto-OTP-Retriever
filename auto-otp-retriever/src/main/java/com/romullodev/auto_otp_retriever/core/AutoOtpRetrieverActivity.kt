@@ -41,6 +41,8 @@ abstract class AutoOtpRetrieverActivity : AppCompatActivity() {
     open val timeoutListener: () -> Unit = {}
     open val startListenSmsMessagesSuccessfully: () -> Unit = {}
     open val failureOnListenSmsMessages: () -> Unit = {}
+    open val registerOtpReceiverListener: () -> Unit = {}
+    open val unregisterOtpReceiverListener: () -> Unit = {}
 
     private val autoTopReceiver = AutoOtpReceiver().apply {
         initializeFields(
@@ -64,12 +66,14 @@ abstract class AutoOtpRetrieverActivity : AppCompatActivity() {
             SmsRetriever.SEND_PERMISSION,
             null
         )
+        registerOtpReceiverListener.invoke()
         initAutoOtp()
     }
     override fun onPause() {
         super.onPause()
         try {
             unregisterReceiver(autoTopReceiver)
+            unregisterOtpReceiverListener.invoke()
         }catch (e: Exception){
             Log.e("AutoOtp", e.printStackTrace().toString())
         }

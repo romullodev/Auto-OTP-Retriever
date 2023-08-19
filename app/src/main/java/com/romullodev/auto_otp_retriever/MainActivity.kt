@@ -27,6 +27,8 @@ class MainActivity : AutoOtpRetrieverActivity() {
     override val timeoutListener: () -> Unit get() = { Log.d("MainActivity", "timeout - otp retriever") }
     override val startListenSmsMessagesSuccessfully: () -> Unit get() = { Log.d("MainActivity", "listening for sms messages") }
     override val failureOnListenSmsMessages: () -> Unit get() = { Log.d("MainActivity", "failure on listening for sms messages") }
+    override val registerOtpReceiverListener: () -> Unit get() = { Log.d("MainActivity", "opt receiver was registered") }
+    override val unregisterOtpReceiverListener: () -> Unit get() = { Log.d("MainActivity", "opt receiver was unregistered") }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
