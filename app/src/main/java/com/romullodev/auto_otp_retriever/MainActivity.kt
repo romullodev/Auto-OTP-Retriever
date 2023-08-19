@@ -8,37 +8,42 @@ import com.romullodev.auto_otp_retriever.databinding.ActivityMainBinding
 class MainActivity : AutoOtpRetrieverActivity() {
     private lateinit var binding: ActivityMainBinding
 
-    override val otpCodeListener: (String) -> Unit
-        get() = {
-            setupOtpListeners(it)
-        }
-    override val timeoutListener: () -> Unit
-        get() = {
-            Log.d("MainActivity", "timeout - otp retriever")
-        }
+    override val otpCodeListener: (String) -> Unit = { setupOtpListener(it) }
+    override val phoneNumberHintListener: (String) -> Unit = { setupPhoneNumberListener(it) }
 
-    override val startListenSmsMessagesSuccessfully: () -> Unit
-        get() = {
-            Log.d("MainActivity", "listening for sms messages")
+    private fun setupOtpListener(token: String) {
+        binding.run {
+            editTextOtp.setText(token)
+            editTextOtp.setSelection(token.length)
         }
+    }
+    private fun setupPhoneNumberListener(phoneNumber: String) {
+        binding.run {
+            phoneNumberEditText.setText(phoneNumber)
+            phoneNumberEditText.setSelection(phoneNumber.length)
+        }
+    }
 
-    override val failureOnListenSmsMessages: () -> Unit
-        get() = {
-            Log.d("MainActivity", "failure on listening for sms messages")
-        }
+    override val timeoutListener: () -> Unit get() = { Log.d("MainActivity", "timeout - otp retriever") }
+    override val startListenSmsMessagesSuccessfully: () -> Unit get() = { Log.d("MainActivity", "listening for sms messages") }
+    override val failureOnListenSmsMessages: () -> Unit get() = { Log.d("MainActivity", "failure on listening for sms messages") }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.button.setOnClickListener {
-            binding.button.text = "listening ..."
-            initializeAutoOtp()
-        }
+        setupListeners()
     }
 
-    private fun setupOtpListeners(token: String) {
-        binding.editText.setText(token)
-        binding.editText.setSelection(token.length)
+    private fun setupListeners() {
+        binding.run {
+            buttonStartListening.setOnClickListener {
+                buttonStartListening.text = "listening ..."
+                initializeAutoOtp()
+            }
+            buttonPickePhone.setOnClickListener {
+                requestPhoneNumberHint()
+            }
+        }
     }
 }

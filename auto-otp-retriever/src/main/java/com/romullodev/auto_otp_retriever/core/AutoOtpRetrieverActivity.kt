@@ -2,9 +2,13 @@ package com.romullodev.auto_otp_retriever.core
 
 import android.app.Activity
 import android.content.IntentFilter
+import android.util.Log
 import androidx.activity.result.ActivityResult
+import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.auth.api.identity.GetPhoneNumberHintIntentRequest
+import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.romullodev.auto_otp_retriever.broadcast.AutoOtpReceiver
 
@@ -13,7 +17,27 @@ abstract class AutoOtpRetrieverActivity : AppCompatActivity() {
         ActivityResultContracts.StartActivityForResult()
     ) { handleSmsRetrieved(it) }
 
+    private val pickPhoneNumberLauncher = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {
+        handlePickPhoneNumber(it)
+    }
+
+    private fun handlePickPhoneNumber(activityResult: ActivityResult?) {
+        activityResult?.let { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                try {
+                    phoneNumberHintListener.invoke(
+                        Identity.getSignInClient(this).getPhoneNumberFromIntent(result.data)
+                    )
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
+
+
     abstract val otpCodeListener: (String) -> Unit
+    abstract val phoneNumberHintListener: (String) -> Unit
     open val timeoutListener: () -> Unit = {}
     open val startListenSmsMessagesSuccessfully: () -> Unit = {}
     open val failureOnListenSmsMessages: () -> Unit = {}
@@ -33,7 +57,6 @@ abstract class AutoOtpRetrieverActivity : AppCompatActivity() {
             }
         }
     }
-
     protected fun initializeAutoOtp() {
         registerReceiver(
             autoTopReceiver,
@@ -43,12 +66,14 @@ abstract class AutoOtpRetrieverActivity : AppCompatActivity() {
         )
         initAutoOtp()
     }
-
     override fun onPause() {
         super.onPause()
-        unregisterReceiver(autoTopReceiver)
+        try {
+            unregisterReceiver(autoTopReceiver)
+        }catch (e: Exception){
+            Log.e("AutoOtp", e.printStackTrace().toString())
+        }
     }
-
     private fun initAutoOtp() {
         SmsRetriever.getClient(this)
             .startSmsUserConsent(null)
@@ -57,6 +82,22 @@ abstract class AutoOtpRetrieverActivity : AppCompatActivity() {
             }
             .addOnFailureListener {
                 failureOnListenSmsMessages.invoke()
+            }
+    }
+
+    protected fun requestPhoneNumberHint() {
+        val request = GetPhoneNumberHintIntentRequest.builder().build()
+        Identity.getSignInClient(this)
+            .getPhoneNumberHintIntent(request)
+            .addOnSuccessListener { taskResult ->
+                pickPhoneNumberLauncher.launch(
+                    IntentSenderRequest.Builder(
+                        taskResult.intentSender
+                    ).build()
+                )
+            }
+            .addOnFailureListener {
+                it.printStackTrace()
             }
     }
 }
