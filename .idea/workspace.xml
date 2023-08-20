@@ -10,12 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b44100dc-5e0a-4213-8cab-4dea7b38ca95" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/keystore.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/romullodev/auto_otp_retriever/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/romullodev/auto_otp_retriever/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auto-otp-retriever/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/auto-otp-retriever/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auto-otp-retriever/src/main/java/com/romullodev/auto_otp_retriever/broadcast/AutoOtpReceiver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/auto-otp-retriever/src/main/java/com/github/romullodev/auto_otp_retriever/broadcast/AutoOtpReceiver.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auto-otp-retriever/src/main/java/com/romullodev/auto_otp_retriever/core/AutoOtpExtensions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/auto-otp-retriever/src/main/java/com/github/romullodev/auto_otp_retriever/core/AutoOtpExtensions.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auto-otp-retriever/src/main/java/com/romullodev/auto_otp_retriever/core/AutoOtpRetrieverActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/auto-otp-retriever/src/main/java/com/github/romullodev/auto_otp_retriever/core/AutoOtpRetrieverActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +67,11 @@
       </state>
     </system>
   </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="EXPORT_PRIVATE_KEY" value="false" />
+    <option name="KEY_STORE_PATH" value="$PROJECT_DIR$/app/key/auto_otp_retriever.jks" />
+    <option name="KEY_ALIAS" value="key0" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -78,16 +84,24 @@
   </component>
   <component name="ProjectViewState">
     <option name="compactDirectories" value="true" />
+    <option name="flattenPackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "BundleExportedModule": "Auto-OTP-Retriever.app",
+    "ExportBundle.BundlePathForAuto-OTP-Retriever.app": "/home/romulo/workspace/Auto-OTP-Retriver/app",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true"
+  },
+  "keyToStringList": {
+    "ExportApk.BuildVariants": [
+      "release"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="Auto-OTP-Retriever.app.main" />
