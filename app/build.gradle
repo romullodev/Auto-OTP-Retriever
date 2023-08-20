@@ -37,8 +37,8 @@ android {
 
 dependencies {
 
-    //implementation project(path: ':auto-otp-retriever')
-    implementation 'com.local.romullodev:auto-otp-retriever:1.0.0'
+    implementation project(path: ':auto-otp-retriever')
+    //implementation 'com.local.romullodev:auto-otp-retriever:1.0.0'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'

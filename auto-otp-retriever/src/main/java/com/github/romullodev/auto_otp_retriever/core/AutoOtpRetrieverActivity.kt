@@ -1,4 +1,4 @@
-package com.romullodev.auto_otp_retriever.core
+package com.github.romullodev.auto_otp_retriever.core
 
 import android.app.Activity
 import android.content.IntentFilter
@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.identity.GetPhoneNumberHintIntentRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.phone.SmsRetriever
-import com.romullodev.auto_otp_retriever.broadcast.AutoOtpReceiver
+import com.github.romullodev.auto_otp_retriever.broadcast.AutoOtpReceiver
 
 abstract class AutoOtpRetrieverActivity : AppCompatActivity() {
     private val requestLauncherPermission = registerForActivityResult(

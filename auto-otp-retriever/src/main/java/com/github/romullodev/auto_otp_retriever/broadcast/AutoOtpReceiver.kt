@@ -1,4 +1,4 @@
-package com.romullodev.auto_otp_retriever.broadcast
+package com.github.romullodev.auto_otp_retriever.broadcast
 
 import android.content.BroadcastReceiver
 import android.content.Context

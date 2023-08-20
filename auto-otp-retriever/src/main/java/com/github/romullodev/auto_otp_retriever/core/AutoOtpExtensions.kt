@@ -1,4 +1,4 @@
-package com.romullodev.auto_otp_retriever.core
+package com.github.romullodev.auto_otp_retriever.core
 
 import java.util.regex.Pattern
 

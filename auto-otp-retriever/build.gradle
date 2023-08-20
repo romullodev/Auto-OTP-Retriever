@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'com.romullodev.auto_otp_retriever'
+    namespace 'com.github.romullodev.auto_otp_retriever'
     compileSdk 33
 
     defaultConfig {

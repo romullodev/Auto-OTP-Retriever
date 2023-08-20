@@ -2,7 +2,7 @@ package com.romullodev.auto_otp_retriever
 
 import android.os.Bundle
 import android.util.Log
-import com.romullodev.auto_otp_retriever.core.AutoOtpRetrieverActivity
+import com.github.romullodev.auto_otp_retriever.core.AutoOtpRetrieverActivity
 import com.romullodev.auto_otp_retriever.databinding.ActivityMainBinding
 
 class MainActivity : AutoOtpRetrieverActivity() {
