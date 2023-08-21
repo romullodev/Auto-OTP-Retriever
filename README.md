@@ -21,7 +21,7 @@ allprojects {
 ### Adicione a dependência da biblioteca
 
 ```groove
-implementation 'com.github.romullodev:auto-otp-retriever:1.0.0'
+implementation 'com.github.romullodev:Auto-OTP-Retriever:1.0.0'
 ```
 
 ## Utilização
